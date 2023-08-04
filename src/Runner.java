@@ -7,5 +7,6 @@ public class Runner {
         Veritabani.baslangicUyelerVeritabaniOlustur();
         Veritabani.baslangicKitaplarVeritabaniOlustur();
         Helper.anaMenu();
+
     }
 }

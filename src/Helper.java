@@ -21,42 +21,41 @@ public class Helper {
     }
 
     public static void anaMenu() throws InterruptedException {
+            login(); // Kullanıcı girişi yapılıyor
+            //TODO User Role'e göre kullanıcının "showAdminMenu()" ya da "showUserMenu()" ye
+            //TODO Yönlendirin...
 
-        login(); // Kullanıcı girişi yapılıyor
-        //TODO User Role'e göre kullanıcının "showAdminMenu()" ya da "showUserMenu()" ye
-        //TODO Yönlendirin...
-
-        String tercih = "";
-         do {//TODO Kullanıcıdan alacağınız tercihlere göre, gerekli menü metodlarına yönlendirme yapınız
-             System.out.println("\n=========== TECHNO STUDY CONFLUENCE =============\n" +
-                            "=================== ANA MENU ====================\n" +
-                            "\n" +
-                            "\t   1- Kutuphane Bilgileri Goruntule\n" +
-                            "\t   2- Uyeler Menu\n" +
-                            "\t   3- Kitaplar Menu\n" +
-                            "\t   Q- CIKIS\n");
-            System.out.print("Lutfen Menuden tercihinizi yapiniz:");
-
-            tercih = scan.nextLine().toLowerCase();
-
-             switch (tercih){
-                 case "1":
-                     kutuphaneBilgileriniYazdir();
-                     break;
-                 case "2":
-                     loginAndShowUserMenu(UserRole.ADMIN);
-                     break;
-                 case "3":
-                     loginAndShowUserMenu(UserRole.USER);
-                     break;
-                 default:
-                     System.out.print("Lutfen gecerli bir tercih giriniz:");
-
-            }
-
-        }while ( tercih.equals("Q"));
-
-        projeDurdur();
+//        String tercih = "";
+//         do {//TODO Kullanıcıdan alacağınız tercihlere göre, gerekli menü metodlarına yönlendirme yapınız
+//             System.out.println("\n=========== TECHNO STUDY CONFLUENCE =============\n" +
+//                            "=================== ANA MENU ====================\n" +
+//                            "\n" +
+//                            "\t   1- Kutuphane Bilgileri Goruntule\n" +
+//                            "\t   2- Uyeler Menu\n" +
+//                            "\t   3- Kitaplar Menu\n" +
+//                            "\t   Q- CIKIS\n");
+//            System.out.print("Lutfen Menuden tercihinizi yapiniz:");
+//
+//            tercih = scan.nextLine().toLowerCase();
+//
+//             switch (tercih){
+//                 case "1":
+//                     kutuphaneBilgileriniYazdir();
+//                     break;
+//                 case "2":
+//                     loginAndShowUserMenu(UserRole.ADMIN);
+//                     break;
+//                 case "3":
+//                     loginAndShowUserMenu(UserRole.USER);
+//                     break;
+//                 default:
+//                     System.out.print("Lutfen gecerli bir tercih giriniz:");
+//
+//            }
+//
+//        }while ( tercih.equals("Q"));
+//
+//        projeDurdur();
     }
 
     public static void kutuphaneBilgileriniYazdir() throws InterruptedException
@@ -98,7 +97,7 @@ public class Helper {
             showAdminMenu();
         }else if (role == UserRole.USER)
         {
-            System.out.println("Standart Olarak Giriş Yapıldı..");
+            System.out.println("Standart Kullanıcı Olarak Giriş Yapıldı..");
             showUserMenu();
         }else {
             System.out.println("Bu sayfaya erisim izniniz yok.");
@@ -116,12 +115,11 @@ public class Helper {
 
         if (username.equals("admin") && password.equals("Admin123")){
             loggedInUserRole=UserRole.ADMIN;
-            return UserRole.ADMIN;
         } else if (username.equals("user") && password.equals("User123")) {
             loggedInUserRole=UserRole.USER;
-            return UserRole.USER;
         }else
-            return null;
+            loggedInUserRole=null;
+            return loggedInUserRole;
         //TODO Girilen Kullanıcı adı ve şifreyi kontrol edin,
         //TODO Geçerli kullanıcıadı ve şifreyse UserRole return edin... > ADMIN ya da USER
 
@@ -139,7 +137,7 @@ public class Helper {
                           "\t   A- ANAMENU\n" +
                           "\t   Q- CIKIS");
 
-          System.out.println("Tercihiniz : ");
+          System.out.print("Tercihiniz : ");
           tercih=scan.nextLine();
           //TODO Kullanıcıdan alacağınız tercihlere göre ilgili menüye (metoda) yönlendirme yapınız...
          switch (tercih){
